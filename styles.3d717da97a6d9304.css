@@ -1,0 +1,1 @@
+.cursor-pointer{cursor:pointer}.nav-link.neutral{color:#6b7280!important}.nav-link.neutral.active{color:#000!important}.btn-delete-task{display:none;opacity:0;animation:fade-in .5s ease-in-out forwards;color:#374151}.btn-delete-task:hover{color:#dc3545}.list-group-item:hover .btn-delete-task{display:block;opacity:1}@keyframes fade-in{0%{opacity:0}to{opacity:1}}
