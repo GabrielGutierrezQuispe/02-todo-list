@@ -22,6 +22,7 @@ export class TodoListComponent {
       completed: false,
     },
   ];
+  searchTerm: string = '';
 
   addTask() {
     const task = {
@@ -30,6 +31,7 @@ export class TodoListComponent {
     }
     this.tasks.push(task);
     this.newTask = '';
+    this.filter(); /* llama a la funcion luego de agregar una tarea  */
   }
   
   updateTask(task: any, title: string) {
@@ -54,4 +56,22 @@ export class TodoListComponent {
     this.editableId = null;
     this.updateTask(task, title);
   }
+
+  filterTasks: any[] = []; /* se asigna para que almacene las tareas filtradas por el buscador  */
+
+  filter() { /* aplicamos el criterio de busqueda segun el filtro de deseemos */
+    const searchTerm = this.searchTerm.toLowerCase();
+    if (searchTerm === '') {
+      this.filterTasks = this.tasks;
+    } else {
+      this.filterTasks = this.tasks.filter((task) =>
+        task.title.toLowerCase().includes(searchTerm)
+      );
+    }
+  }
+
+  ngOnInit() { /* para que cuando la pagina inicie o se cargue se muestre la lista de tareas */
+    this.filter();
+  }
+
 }

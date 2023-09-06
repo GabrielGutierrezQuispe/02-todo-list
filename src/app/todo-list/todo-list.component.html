@@ -13,10 +13,14 @@
         aria-describedby="btn-add-task" [(ngModel)]="newTask">
       <button class="btn btn-primary" type="button" id="btn-add-task" (click)="addTask()">Agregar</button>
     </div>
-
     <!-- Task list -->
-    <ul class="list-group mb-0" *ngIf="tasks && tasks.length > 0; else notDataTpl">
-      <li *ngFor="let task of tasks; let i = index"
+    <hr>
+    <div class="input-group mb-2 w-75">
+      <input type="text" class="form-control" [(ngModel)]="searchTerm" placeholder="Buscar tarea..." (input)="filter()">
+      <button class="btn btn-outline-secondary" type="button" id="btn-add-task" (click)="filter()">Buscar</button>
+    </div>
+    <ul class="list-group mb-0" *ngIf="filterTasks.length > 0; else notDataTpl">
+      <li *ngFor="let task of filterTasks; let i = index"
         class="list-group-item d-flex justify-content-between align-items-center border-0 mb-2 rounded"
         style="background-color: #f4f6f7;">
         <div>
